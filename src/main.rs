@@ -10,7 +10,7 @@ struct Cli {
     fact: Option<bool>,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Default, Debug, Serialize, Deserialize)]
 struct Fact {
     fact: String,
     category: String,

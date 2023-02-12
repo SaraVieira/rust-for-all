@@ -1,6 +1,6 @@
 # the_cow
-> 💬 a CLI for learning to distribute CLIs in rust
 
+> 💬 a CLI for making a cow say things
 
 ## Usage
 

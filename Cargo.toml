@@ -1,13 +1,11 @@
 [package]
-name = "axolotlsay"
-description = "💬 a CLI for learning to distribute CLIs in rust"
+name = "thecow"
+description = "💬 a cli for the singular cow"
 version = "0.0.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/axodotdev/axolotlsay"
 
 [dependencies]
 clap = { version = "4.1.4", features = ["derive"] }
-
-[dev-dependencies]
-assert_cmd = "2.0.8"
+reqwest = {version = "0.11.14", features = ["blocking", "json"]}
+serde = { version = "1.0.152", features = ["derive"] }

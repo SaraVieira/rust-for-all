@@ -4,10 +4,10 @@ use serde::{Deserialize, Serialize};
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
-    #[arg(short, long)]
+    #[arg(short, long, help = "Tell the cow a message to say")]
     msg: Option<String>,
-    #[arg(short, long)]
-    fact: Option<bool>,
+    #[arg(short, long, action, help = "Show a random fact instead")]
+    fact: bool,
 }
 
 #[derive(Default, Debug, Serialize, Deserialize)]
@@ -23,7 +23,7 @@ fn main() -> Result<(), reqwest::Error> {
         the_cow(msg);
     }
 
-    if cli.fact.is_some() {
+    if cli.fact {
         let body =
             reqwest::blocking::get("https://useless-api.pages.dev/api/random")?.json::<Fact>()?;
 
@@ -34,7 +34,7 @@ fn main() -> Result<(), reqwest::Error> {
 }
 
 fn the_cow(text: String) {
-    let dashes = "-".repeat(&text.len() + 2);
+    let dashes = "-".repeat(text.len() + 2);
     println!();
     println!();
     println!("              +{}+", dashes);

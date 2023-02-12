@@ -18,33 +18,25 @@ struct Fact {
 
 fn main() -> Result<(), reqwest::Error> {
     let cli = Cli::parse();
-    println!("{:?}", cli);
-    let mut text = String::new();
-    let mut dashes = String::from("-");
 
     if let Some(msg) = cli.msg {
-        let len = msg.len();
-        text = msg;
-        dashes = "-".repeat(&len + 2);
+        the_cow(msg);
     }
 
     if cli.fact.is_some() {
         let body =
             reqwest::blocking::get("https://useless-api.pages.dev/api/random")?.json::<Fact>()?;
 
-        let len = body.fact.len();
-        text = body.fact;
-        dashes = "-".repeat(&len + 2);
+        the_cow(body.fact);
     }
-
-    the_cow(dashes, text);
 
     Ok(())
 }
 
-fn the_cow(dashes: String, text: String) -> () {
-    println!("");
-    println!("");
+fn the_cow(text: String) {
+    let dashes = "-".repeat(&text.len() + 2);
+    println!();
+    println!();
     println!("              +{}+", dashes);
     println!("              | {} |", text);
     println!("              +{}+", dashes);
@@ -55,7 +47,7 @@ fn the_cow(dashes: String, text: String) -> () {
     println!("  / |     ||");
     println!(" *  ||----||");
     println!("    ~~    ~~");
-    println!("");
-    println!("");
-    println!("");
+    println!();
+    println!();
+    println!();
 }

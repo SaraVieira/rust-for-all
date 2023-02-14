@@ -6,7 +6,7 @@
 
 My name is Sara
 
-I am a founding engineer at axo.dev
+I am a founding engineer at [axo.dev](https://axo.dev)
 
 ---
 
